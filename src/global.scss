@@ -1,0 +1,930 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+ @use "sass:math";
+
+ /* Core CSS required for Ionic components to work properly */
+ @import "~@ionic/angular/css/core.css";
+ 
+ /* Basic CSS for apps built with Ionic */
+ @import "~@ionic/angular/css/normalize.css";
+ @import "~@ionic/angular/css/structure.css";
+ @import "~@ionic/angular/css/typography.css";
+ @import '~@ionic/angular/css/display.css';
+ 
+ /* Optional CSS utils that can be commented out */
+ 
+ @import 'stylesColors';
+ @import 'stylesLayout';
+ @import 'giddyUpTheme';
+ @import 'giddyFont';
+ 
+   body, html, app-root, .ion-page {
+       position: fixed!important;
+       top:0px!important;
+       bottom: 0px!important;
+       width: 100%!important;
+       height: 100%!important;
+       border-radius: 0px!important;
+       margin:0px;
+       padding:0px;
+       height: 100%;
+       width: 100%;
+       font-family: Roboto, "Helvetica Neue", sans-serif;
+       overflow: hidden;
+       background-color: transparent;
+       color: rgb(2, 2, 2);
+   }
+   *{
+     box-sizing: border-box;
+   }
+   //font classes 0-100
+   @for $i from 0 through 100 {
+     .f#{$i} {font-size: #{$i}px!important;}
+   }
+   //font weight 100-800
+   @for $i from 1 through 8 {
+     .fw#{$i}00 {
+       font-weight: $i*100;
+     };
+   }
+   //width classes 0-100
+   @for $i from 0 through 100 {
+     .w#{$i} {width: percentage(math.div($i, 100));}
+   }
+   //padding and margins 0-100 by 5;
+   $sizeMap:(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,20,25,30,35,36,40,50,55,60,65,70,75,80,85,90,95,100);
+   //padding and margin directions;
+   $positioningClasses:(
+     p:padding,
+     pl:padding-left,
+     pr:padding-right,
+     pb:padding-bottom,
+     pt:padding-top,
+     m:margin,
+     ml:margin-left,
+     mr:margin-right,
+     mb:margin-bottom,
+     mt:margin-top,
+     lh:line-height,
+     maxH:max-height,
+     minH:min-height,
+     maxW:max-width,
+     minW:min-width,
+     top:top,
+     bottom:bottom,
+     left:left,
+     right:right,
+     t:top,
+     b:bottom,
+     l:left,
+     r:right
+   );
+   @each $class, $propertyName in $positioningClasses {
+     @each $size in $sizeMap {
+       .#{$class}#{$size} {
+         #{$propertyName}: #{$size}px;
+       }
+     }
+   }
+ 
+   //custom css
+   ckeditor {
+     -webkit-user-select: text;
+     user-select: text
+   }
+   .ion-page {
+     background: transparent!important;
+   }
+   .mat-button.flat {
+     border-radius: 0px!important;
+   }
+   .align {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     width: 100%;
+     height: 100%;
+   }
+   .align.left{
+     justify-content: flex-start;
+   }
+   .align.right{
+     justify-content: flex-end;
+   }
+   .align.top {
+     align-items: start;
+   }
+   .align.bottom {
+     align-items: end;
+   }
+   .breakWord {
+     word-wrap: break-word;
+   }
+   .swiper-pagination {
+     position: fixed !important;
+     background-color: black;
+     height: 22px;
+     bottom: 0px!important;
+     padding-bottom: env(safe-area-inset-bottom)!important;
+   }
+   .swiper-pagination-bullet-active {
+     background: #94c952!important;
+   }
+   .notificationbadge{
+     background: rgb(195 9 9);
+     color: white;
+     width: auto;
+     height: auto;
+     margin: 0;
+     border-radius: 50%;
+     position: absolute;
+     top: 0px;
+     right: -5px;
+     padding: 1px;
+     height: 20px;
+     width: 20px;
+     line-height: 20px;
+ }
+   .header-arrow-up {
+     width: 0; 
+     height: 0; 
+     border-left: 10px solid transparent;
+     border-right: 10px solid transparent;
+     
+     border-bottom: 10px solid #757575;
+   }
+   .mat-icon-button {
+     width: 36px!important;
+     height: 36px!important;
+     line-height: 36px!important;
+ }
+   .cameraFilePicker {
+     width: 90vh;
+   }
+   input {
+     background-color: rgb(252, 252, 252);
+   }
+   .iosTop{
+     padding-top: env(safe-area-inset-top)!important;
+     padding-left: env(safe-area-inset-left)!important;
+     padding-right: env(safe-area-inset-right)!important;
+   }
+   .iosBottom{
+     padding-bottom: env(safe-area-inset-bottom)!important;
+     padding-left: env(safe-area-inset-left)!important;
+     padding-right: env(safe-area-inset-right)!important;
+   }
+   .iosLeft{
+     padding-left: env(safe-area-inset-left)!important;
+   }
+   .iosRight{
+     padding-right: env(safe-area-inset-right)!important;
+   }
+   .truncated, .truncate {
+     white-space: nowrap !important;
+     overflow: hidden !important;
+     text-overflow: ellipsis !important;
+     width: 100% !important
+   }
+   .viewBg {
+       background: #ECE9E6;
+       background: -webkit-linear-gradient(to bottom, rgb(253, 253, 253), #ECE9E6);
+       background: linear-gradient(to bottom, rgb(253, 253, 253), #ECE9E6);
+   }
+   .orangeGradient {
+     background: #f15a2c;  /* fallback for old browsers */
+     background: -webkit-linear-gradient(to bottom, #f15a2c, #f1852c);  /* Chrome 10-25, Safari 5.1-6 */
+     background: linear-gradient(to bottom, #f15a2c, #f1852c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+ 
+   }
+   .chipBtn {
+     padding-left: 10px !important;
+     margin: 10px !important;
+     line-height: 20px !important;
+     border-radius: 15px !important;
+     padding-right: 10px!important;
+   }
+   .lgIconBtn {
+       width: 64px!important;
+       height: 64px!important;
+       line-height: 0px!important;
+       min-width: 64px!important;
+       min-height: 64px!important;
+   }
+   .lgIconBtn i, .mdIconBtn .material-icons{
+     font-size:32px;
+ }
+   .mdIconBtn {
+     width: 48px!important;
+     height: 48px!important;
+     line-height: 0px!important;
+     min-width: 48px!important;
+     min-height: 48px!important;
+   }
+   .mdIconBtn i, .mdIconBtn .material-icons {
+     font-size:24px;
+   }
+   .smIconBtn {
+     height: 32px!important; 
+     width: 32px!important;
+     line-height: 0px!important;
+     min-height: 32px!important; 
+     min-width: 32px!important;
+   }
+   .smIconBtn i, .smIconBtn .material-icons{
+     font-size:16px;
+   }
+   .badgeButton {
+     height: 18px!important; 
+     width: 18px!important;
+     line-height: 0px!important;
+     min-height: 18px!important; 
+     min-width: 18px!important;
+     font-size: 12px!important;
+   }
+   .xsIconBtn {
+     height: 24px!important; 
+     width: 24px!important;
+     line-height: 0px!important;
+     min-height: 24px!important; 
+     min-width: 24px!important;
+   }
+   .xsIconBtn i, .xsIconBtn .material-icons{
+     font-size:12px;
+   }
+   .notificationIcon {
+     height: 16px!important; 
+     width: 16px!important;
+     line-height:16px!important;
+     font-size: 6px;
+   }
+   .white-border {
+     border: 1px solid rgb(253, 253, 253);
+   }
+   .apptQuickMenu .lgIconBtn {
+     width: 30px!important;
+     height: 30px!important;
+     line-height: 30px!important;
+     font-size:20px!important
+ }
+   .apptQuickMenu .lgIconBtn i{
+     font-size:12px;
+   }
+   .apptQuickMenu .title {
+     position: relative; top: -7px;
+     color: rgb(75, 75, 75);
+   }
+   .fancyInput {
+     position: relative;
+   }
+   .fancyInput i.left {
+       position: absolute;
+       top: 14px;
+       left: 12px;
+   }
+   .fancyInput i.right {
+     position: absolute;
+     top: 14px;
+     right: 12px;
+   }
+   .fancyInput.noIcon input {
+     
+   }
+   .fancyInput.icon input {
+     padding-left: 32px!important;
+   }
+   .fancyInput.clear input {
+     padding-right: 32px!important;
+   }
+   button.selectField {
+     border: 1px solid #ddd!important;
+   }
+   .noRadius {
+     border-radius: 0px!important;
+   }
+   .rounded {
+     border-radius: 5px;
+   }
+   .roundedTop {
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+   }
+   .roundedBottom {
+     border-bottom-left-radius: 5px;
+     border-bottom-right-radius: 5px;
+   }
+   .roundedLeft {
+     border-top-left-radius: 5px;
+     border-bottom-left-radius: 5px;
+   }
+   .roundedRight {
+     border-top-right-radius: 5px;
+     border-bottom-right-radius: 5px;
+   }
+   .roundedTopLeft {
+     border-top-left-radius: 5px;
+   }
+   .roundedTopRight {
+     border-top-right-radius: 5px;
+   }
+   .roundedBottomLeft {
+     border-bottom-left-radius: 5px;
+   }
+   .roundedBottomRight {
+     border-bottom-right-radius: 5px;
+   }
+   .minBtn {
+     padding: 0px!important;
+     margin: 0px!important;
+     line-height: 14px!important;
+     min-width:0px!important;
+   }
+   .mat-icon-button.small {
+     width: 24px!important;
+     height: 24px!important;
+     line-height: 24px!important;
+   }
+   .styledInput {
+     border:1px solid #ccc;
+     border-radius: 5px;
+     padding:10px;
+     width: 100%;
+   }
+   .styledSelect {
+     border:1px solid #ccc!important;
+     border-radius: 5px!important;
+     padding-left: 5px!important;
+     padding-right: 5px!important;
+   }
+   .styledSelect.withHeader {
+     height: 56px!important;
+     line-height: 20px!important;
+   }
+   .styledSelect.estimate{
+     height: 36px!important;
+     line-height: 14px!important;
+     border: 1px solid rgb(253, 253, 253);
+     border-radius: 5px;
+     padding: 10px;
+     width:100%;
+   }
+   .styledSelect.phase{
+     height: 35px!important;
+   }
+   .styledSelect.whiteContent .mat-select-value-text{
+     color:rgb(253, 253, 253)!important
+   }
+   .styledSelect.whiteContent .mat-select-arrow{
+       color: rgb(253, 253, 253)!important;
+   }
+   .mat-menu-panel {
+     max-height: 50vh!important;
+   }
+   .appMenu.mat-menu-panel {
+     max-height: 80vh!important;
+   }
+   @media (min-width: 768px) {
+     .mat-menu-panel {
+       max-height: 60vh!important;
+     }
+   }
+   .searchMenuDD.mat-menu-panel {
+     background: #757575 !important;
+     position: fixed!important;
+     top: calc(100px + env(safe-area-inset-top))!important;
+     bottom: 0px!important;
+     left: 0px!important;
+     right: 0px!important;
+     max-width: 100vw!important;
+     border-radius: 0px!important;
+     box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0)!important;
+     height: calc(100% - 100px - env(safe-area-inset-top))!important;
+     max-height: calc(100% - 100px - env(safe-area-inset-top))!important;
+   }
+   .searchMenuDD.dontShow.mat-menu-panel {
+       display: none!important;
+   }
+   .oppDetailsViewSelector {
+     background-color: rgba(0,0,0,.9);
+     min-width: 70vw!important;
+     position: absolute;
+     right: 3px;
+     top: 5px;
+     height: auto!important;
+     max-height: calc(100%)!important;
+   }
+   .oppDetailsViewSelector .mat-divider {
+     border-top-color: rgba(97, 97, 97, 0.5)!important;
+   }
+   .mat-dialog-container {
+     padding: 0px!important;
+   }
+   .mat-bottom-sheet-container {
+     padding: 0px!important;
+   }
+   .blur {
+     -webkit-filter: blur(50px);
+     -moz-filter: blur(50px);
+     -o-filter: blur(50px);
+     -ms-filter: blur(50px);
+     filter: blur(50px);
+   }
+   .lightenBg {
+     background: rgba(255, 255, 255, 0.8);
+                 background: -webkit-linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(236, 233, 230, 0.8));
+                 background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(236, 233, 230, 0.8));
+   }
+   .pagebreak {
+     page-break-after: always;
+   }
+   .preWrap {
+     white-space: pre-wrap;
+   }
+   .bold
+   {
+     font-weight: bold;
+   }
+ /* Dialogs */
+ ion-modal.fullScreenModal {
+  --width: 100%;
+  --height: 100%;
+  --border-radius: 0;
+}
+ .fullScreenModal, .fullScreenModal .modal-wrapper, .fullScreenModalDarkBg, .fullScreenModalDarkBg .modal-wrapper {
+   max-width: 100%!important;
+   max-height: 100%!important;
+   position: fixed!important;
+   top:0px!important;
+   bottom: 0px!important;
+   left: 0px!important;
+   right: 0px!important;
+   min-width: 100%!important;
+   min-height: 100%!important;
+   border-radius: 0px!important;
+   z-index: 9999!important;
+ }
+
+ .fullScreenModalDarkBg {
+   --background: rgb(0 0 0 / 65%)!important;
+ }
+ .busyBg {
+   --ion-background-color: transparent!important;
+ }
+ .fullScreenModal .mat-dialog-container {
+   border-radius: 0px!important;
+ }
+ .fullScreenBottomSheet {
+   max-width: 100%!important;
+   max-height: 100%!important;
+   position: fixed!important;
+   top:0px!important;
+   bottom: 0px!important;
+   left: 0px!important;
+   right: 0px!important;
+ }
+ .alertModal{
+   position: absolute;
+   width: 90vw;
+   height: 30vh;
+   top: 0;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   margin: auto;
+   border: 0;
+ }
+ .updateModal{
+   position: absolute;
+   width: 90vw;
+   height: 50vh;
+   top: 0;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   margin: auto;
+   border: 0;
+ }
+ /*snackbar*/
+ .successSnack button
+ {
+   color: #94c952!important;
+ }
+ 
+ .configSnack button
+ {
+   color: #44b9e9!important;
+ }
+ 
+ /*mat overrides*/
+ .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+   background-color: #F44336!important;
+ }
+ .mat-radio-button.mat-accent .mat-radio-inner-circle, .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple), .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple, .mat-radio-button.mat-accent:active .mat-radio-persistent-ripple {
+   background-color: #F44336!important;
+ }
+ .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+   border-color: #F44336!important;
+ }
+ .forgotPasswordContainer {
+   width: 90%;
+ }
+ 
+ /* ionic date picker override - options didn't fit in the screen */
+ .picker-opt
+ {
+   
+     padding-right:5px;
+ }
+ @media only screen 
+ and (min-device-width : 768px) { 
+   .forgotPasswordContainer {
+       width: 50%!important;
+   }
+ }
+ @media only screen 
+ and (min-device-width : 1200px) { 
+   .forgotPasswordContainer {
+       width: 30%!important;
+   }
+ }
+ .cdk-overlay-dark-backdrop {
+   background: rgba(0, 0, 0, 0.8);
+   background: -webkit-radial-gradient(circle, rgba(0,0,0, 0.65), rgba(0,0,0, 0.8));
+   background: radial-gradient(circle, rgba(0,0,0, 0.65), rgba(0,0,0, 0.8));
+ }
+ 
+ ion-app, ion-content, .nav-decor {
+   background-color: transparent !important;
+ }
+ ion-toggle {
+     --background: rgb(104, 104, 104);
+     --handle-background: rgb(253, 253, 253);
+ 
+     --background-checked: #5bbf00;
+     --handle-background-checked: rgb(253, 253, 253);
+   }
+ .autoHeight{
+   height: auto!important;
+ }
+ ngb-popover-window .popover-body {
+   color: #000000;
+   background-color: white;
+   box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+ }
+ ngb-popover-window .bg-primary {
+   background-color: #5bbf00 !important;
+ }
+ ngb-popover-window {
+     z-index: 1060;
+     display: block;
+     max-width: 276px;
+     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+     font-style: normal;
+     font-weight: 400;
+     line-height: 1.5;
+     text-align: left;
+     text-align: start;
+     text-decoration: none;
+     text-shadow: none;
+     text-transform: none;
+     letter-spacing: normal;
+     word-break: normal;
+     word-spacing: normal;
+     white-space: normal;
+     line-break: auto;
+     font-size: 0.875rem;
+     word-wrap: break-word;
+     background-color: #fff;
+     background-clip: padding-box;
+     border-radius: 5px
+ }
+ 
+ ngb-popover-window .popover .arrow 
+ {
+     position: absolute;
+     display: block;
+     width: 1rem;
+     height: 0.5rem;
+     margin: 0 0.3rem;
+ }
+ 
+ ngb-popover-window .popover .arrow::before, ngb-popover-window .popover .arrow::after 
+ {
+     position: absolute;
+     display: block;
+     content: "";
+     border-color: transparent;
+     border-style: solid;
+ }
+ 
+ ngb-popover-window .bs-popover-top, ngb-popover-window .bs-popover-auto[x-placement^="top"] 
+ {
+     margin-bottom: 0.5rem;
+ }
+ 
+ ngb-popover-window .bs-popover-top > .arrow, ngb-popover-window .bs-popover-auto[x-placement^="top"] > .arrow 
+ {
+     bottom: calc(-0.5rem - 1px);
+ }
+ 
+ ngb-popover-window .bs-popover-top > .arrow::before, ngb-popover-window .bs-popover-auto[x-placement^="top"] > .arrow::before 
+ {
+     bottom: 0;
+     border-width: 0.5rem 0.5rem 0;
+     border-top-color: rgba(0, 0, 0, 0.25);
+ }
+ 
+ ngb-popover-window .bs-popover-top > .arrow::after, ngb-popover-window .bs-popover-auto[x-placement^="top"] > .arrow::after 
+ {
+     bottom: 1px;
+     border-width: 0.5rem 0.5rem 0;
+     border-top-color: #fff;
+ }
+ 
+ ngb-popover-window .bs-popover-right, ngb-popover-window .bs-popover-auto[x-placement^="right"] 
+ {
+     margin-left: 0.5rem;
+ }
+ 
+ ngb-popover-window .bs-popover-right > .arrow, .bs-popover-auto[x-placement^="right"] > .arrow 
+ {
+     left: calc(-0.5rem - 1px);
+     width: 0.5rem;
+     height: 1rem;
+     margin: 0.3rem 0;
+ }
+ 
+ ngb-popover-window .bs-popover-right > .arrow::before, ngb-popover-window .bs-popover-auto[x-placement^="right"] > .arrow::before 
+ {
+     left: 0;
+     border-width: 0.5rem 0.5rem 0.5rem 0;
+     border-right-color: rgba(0, 0, 0, 0.25);
+ }
+ 
+ ngb-popover-window .bs-popover-right > .arrow::after, ngb-popover-window .bs-popover-auto[x-placement^="right"] > .arrow::after 
+ {
+     left: 1px;
+     border-width: 0.5rem 0.5rem 0.5rem 0;
+     border-right-color: #fff;
+ }
+ 
+ ngb-popover-window .bs-popover-bottom, ngb-popover-window .bs-popover-auto[x-placement^="bottom"] 
+ {
+     margin-top: 0.5rem;
+ }
+ 
+ ngb-popover-window .bs-popover-bottom > .arrow, ngb-popover-window .bs-popover-auto[x-placement^="bottom"] > .arrow 
+ {
+     top: calc(-0.5rem - 1px);
+ }
+ 
+ ngb-popover-window .bs-popover-bottom > .arrow::before, ngb-popover-window .bs-popover-auto[x-placement^="bottom"] > .arrow::before 
+ {
+     top: 0;
+     border-width: 0 0.5rem 0.5rem 0.5rem;
+     border-bottom-color: rgba(0, 0, 0, 0.25);
+ }
+ 
+ ngb-popover-window .bs-popover-bottom > .arrow::after, ngb-popover-window .bs-popover-auto[x-placement^="bottom"] > .arrow::after 
+ {
+     top: 1px;
+     border-width: 0 0.5rem 0.5rem 0.5rem;
+     border-bottom-color: #fff;
+ }
+ 
+ ngb-popover-window .bs-popover-bottom .popover-header::before, ngb-popover-window .bs-popover-auto[x-placement^="bottom"] .popover-header::before 
+ {
+     position: absolute;
+     top: 0;
+     left: 50%;
+     display: block;
+     width: 1rem;
+     margin-left: -0.5rem;
+     content: "";
+     border-bottom: 1px solid #f7f7f7;
+ }
+ 
+ ngb-popover-window .bs-popover-left, .bs-popover-auto[x-placement^="left"] 
+ {
+     margin-right: 0.5rem;
+ }
+ 
+ ngb-popover-window .bs-popover-left > .arrow, ngb-popover-window .bs-popover-auto[x-placement^="left"] > .arrow 
+ {
+     right: calc(-0.5rem - 1px);
+     width: 0.5rem;
+     height: 1rem;
+     margin: 0.3rem 0;
+ }
+ 
+ ngb-popover-window .bs-popover-left > .arrow::before, ngb-popover-window .bs-popover-auto[x-placement^="left"] > .arrow::before 
+ {
+     right: 0;
+     border-width: 0.5rem 0 0.5rem 0.5rem;
+     border-left-color: rgba(0, 0, 0, 0.25);
+ }
+ 
+ ngb-popover-window .bs-popover-left > .arrow::after, ngb-popover-window .bs-popover-auto[x-placement^="left"] > .arrow::after {
+     right: 1px;
+     border-width: 0.5rem 0 0.5rem 0.5rem;
+     border-left-color: #fff;
+ }
+ 
+ ngb-popover-window .popover-header 
+ {
+     padding: 0.5rem 0.75rem;
+     margin-bottom: 0;
+     font-size: 1rem;
+     background-color: #f7f7f7;
+     border-bottom: 1px solid #ebebeb;
+     border-top-left-radius: calc(0.3rem - 1px);
+     border-top-right-radius: calc(0.3rem - 1px);
+ }
+ 
+ ngb-popover-window .popover-header:empty 
+ {
+     display: none;
+ }
+ 
+ ngb-popover-window .small, ngb-popover-window small 
+ {
+     font-size: 80%;
+     font-weight: 400;
+ }
+ 
+ ngb-popover-window .form-control 
+ {
+     display: block;
+     width: 100%;
+     height: calc(1.5em + 0.75rem + 2px);
+     padding: 0.375rem 0.75rem;
+     font-size: 1rem;
+     font-weight: 400;
+     line-height: 1.5;
+     color: #495057;
+     background-color: #fff;
+     background-clip: padding-box;
+     border: 1px solid #ced4da;
+     border-radius: 0.25rem;
+     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+ }
+ 
+ ngb-popover-window fieldset 
+ {
+     min-width: 0;
+     padding: 0;
+     margin: 0;
+     border: 0;
+ }
+ 
+ ngb-popover-window .btn-link 
+ {
+     font-weight: 400;
+     color: #007bff;
+     text-decoration: none;
+ }
+ 
+ ngb-popover-window .btn 
+ {
+     display: inline-block;
+     font-weight: 400;
+     color: #212529;
+     text-align: center;
+     vertical-align: middle;
+     cursor: pointer;
+     -webkit-user-select: none;
+     -moz-user-select: none;
+     -ms-user-select: none;
+     user-select: none;
+     background-color: transparent;
+     border: 1px solid transparent;
+     padding: .375rem .75rem;
+     font-size: 1rem;
+     line-height: 1.5;
+     border-radius: .25rem;
+     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+ }
+ 
+ 
+ ngb-popover-window .btn-light 
+ {
+     color: #212529;
+     background-color: #f8f9fa;
+     border-color: #f8f9fa;
+ }
+ 
+ ngb-popover-window .text-white 
+ {
+     color: #fff !important;
+ }
+ 
+ ngb-datepicker 
+ {
+     border: 1px solid #dfdfdf;
+     border-radius: .25rem;
+     display: inline-block;
+ }
+ 
+ ngb-datepicker .custom-select 
+ {
+     display: inline-block;
+     width: 100%;
+     height: calc(1.5em + 0.75rem + 2px);
+     padding: 0.375rem 1.75rem 0.375rem 0.75rem;
+     font-size: 1rem;
+     font-weight: 400;
+     line-height: 1.5;
+     color: #495057;
+     vertical-align: middle;
+     background: #fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") right 0.75rem center/8px 10px no-repeat;
+     border: 1px solid #ced4da;
+     border-radius: 0.25rem;
+     -webkit-appearance: none;
+     -moz-appearance: none;
+     appearance: none;
+ }
+ 
+ ngb-datepicker .custom-select:focus 
+ {
+     border-color: #80bdff;
+     outline: 0;
+     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+ }
+ 
+ ngb-datepicker .custom-select:focus::-ms-value 
+ {
+     color: #495057;
+     background-color: #fff;
+ }
+ 
+ ngb-datepicker .custom-select[multiple], ngb-datepicker .custom-select[size]:not([size="1"]) 
+ {
+     height: auto;
+     padding-right: 0.75rem;
+     background-image: none;
+ }
+ 
+ ngb-datepicker .custom-select:disabled 
+ {
+     color: #6c757d;
+     background-color: #e9ecef;
+ }
+ 
+ ngb-datepicker .custom-select::-ms-expand 
+ {
+     display: none;
+ }
+ 
+ ngb-datepicker .custom-select:-moz-focusring 
+ {
+     color: transparent;
+     text-shadow: 0 0 0 #495057;
+ }
+ .styledSelect.whiteContents.whiteTrigger .mat-select-trigger .mat-select-value-text, .styledSelect.whiteContents.whiteTrigger .mat-select-trigger .mat-select-arrow{
+   color: #ffffff!important;
+ }
+ .colored .message {
+   background-color: #94c95233!important;
+ }
+ .message {
+   background-color: #fafafa;
+ }
+ .mat-menu-content:not(:empty) {
+   padding-top: 0px!important;
+   padding-bottom: 0px!important;
+ }
+ .rounded2 {
+   border-radius: 2px!important;
+ }
+ .mat-datepicker-dialog .mat-dialog-container {
+   padding: 24px!important;
+ }
+ .messageCommands .mat-slide-toggle {
+   position: relative;
+   top: 3px;
+ }
+ .messageCommands.noadd .mat-slide-toggle {
+   position: relative;
+   top: 7px;
+ }
+ .messageCommands .mat-slide-toggle.mat-primary.mat-checked .mat-slide-toggle-thumb {
+   background-color: rgb(253 253 253)!important;
+ }
+ .messageCommands .mat-slide-toggle.mat-primary.mat-checked .mat-slide-toggle-bar {
+   background-color: #ffc8b896!important;
+ }
+ .tui-image-editor-help-menu{
+   display: none!important;
+ }
+ ion-app, ion-content, .nav-decor {
+  background-color: transparent !important;
+}

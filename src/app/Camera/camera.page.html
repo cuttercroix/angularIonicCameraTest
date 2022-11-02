@@ -1,0 +1,119 @@
+<div class="flexWrapper">
+  <div class="flexColumn">
+    <div class="shrink" [ngClass]="{'blackTrans': CameraActive, 'black': !CameraActive}">
+      <div class="iosTop">
+        <div class="flexRow">
+          <div class="grow"></div>
+          <div class="shrink p5">
+            <button mat-icon-button (click)="Close()" class="blue white-text"><i class="fa fa-power-off"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="grow" #content style="overflow: hidden;">
+      <div class="flexColumn">
+        <div class="shrink" [ngClass]="{'black': !CameraActive}">
+          <div class="flexRow">
+            <div class="shrink p20" *ngIf="HasFlash && CameraActive">
+              <button mat-icon-button class="white-text" 
+                      [ngClass]="{'amber darken-2': Flash === 'on', 'semiGrey': Flash === 'off', 'blue': Flash === 'torch'}" (click)="CycleFlash()">
+                <i class="fa" [ngClass]="{'fa-bolt': Flash !== 'torch', 'fa-lightbulb': Flash === 'torch'}"></i>
+              </button>
+            </div>
+            <div class="grow"></div>
+            <div class="shrink p20">
+              <button mat-icon-button class="white-text semiGrey" (click)="FlipCam()" *ngIf="CameraActive">
+                <i class="fa fa-refresh"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="grow" [ngClass]="{'black': !CameraActive}">
+          <ion-content id="content" style="overflow: hidden;"></ion-content>
+          <img [src]="LoadedImage" #imagePlaceholder class="hidden">
+        </div>
+        <div class="shrink pb10 pt10" [ngClass]="{'black': !CameraActive}">
+          <div class="flexRow">
+            <div class="grow">
+              
+              <ng-container *ngIf="Platform === 'ios' && ZoomLevels.length > 1">
+                <div class="align" *ngIf="!Front && CameraActive && ZoomLevels?.length">
+                  <div class="p5 zoompill">
+                    <div class="flexRow">
+                      <div class="shrink p5" *ngFor="let zoom of ZoomLevels; let i = index;">
+                        <div class="align">
+                          <button mat-icon-button (click)="SetZoom(zoom)" [ngClass]="{'smIconBtn grey amber-text mat-elevation-z3': Zoom === zoom, 'xsIconBtn white-text': Zoom !== zoom}">
+                              <ng-container *ngIf="zoom === 'ultra'">
+                                  .5
+                                </ng-container>
+                                <ng-container *ngIf="zoom === 'wide'">
+                                  1
+                                </ng-container>
+                                <ng-container *ngIf="zoom === 'tele'">
+                                  2
+                                </ng-container>
+                              <span class="f8" *ngIf="Zoom === zoom">x</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+              
+              
+
+            </div>
+            <div class="shrink p5">
+              <button mat-icon-button class="white cameraTrigger" [disabled]="!CameraActive" (click)="takePicture()">
+                <ng-container *ngIf="CameraActive">
+                  <i class="fa fa-circle white-text"></i>
+                </ng-container>
+                <ng-container *ngIf="!CameraActive">
+                  <i class="fa fa-spinner fa-spin grey-text text lighten-2"></i>
+                </ng-container>
+              </button>
+            </div>
+            <div class="grow">
+              <div class="flexRow">
+                <div class="grow">
+                </div>
+                <div class="shrink pr20">
+                  <div class="align">
+                    <button mat-icon-button class="white-text semiGrey" (click)="PickFromGallery()">
+                      <i class="fa fa-images"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="shrink" [ngClass]="{'blackTrans': CameraActive, 'black': !CameraActive}">
+          <div class="flexRow">
+            <div class="shrink p5 pt10" *ngIf="Images.length">
+              <button mat-icon-button class="white-text" (click)="LaunchGallery()">
+                <i class="fa fa-chevron-up"></i>
+              </button>
+            </div>
+            <div class="grow">
+              <div class="flexRow scrollX" #thumbnails>
+                <ng-container *ngFor="let img of Images">
+                  <div class="shrink p5">
+                    <div class="imgCell" >
+                      <div class="img" [ngStyle]="{ 'background-image': 'url(' + img.Data + ')'}" (click)="ViewImage(img)"></div>
+                    </div>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="shrink" [ngClass]="{'blackTrans': CameraActive, 'black': !CameraActive}">
+      <div class="iosBottom">
+      </div>
+    </div>
+  </div>
+</div>

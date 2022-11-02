@@ -1,0 +1,109 @@
+<div class="flexWrapper">
+    <ng-container *ngIf="MobileMode">
+        <div class="flexRow">
+            <div class="shrink">
+                <button mat-icon-button [matMenuTriggerFor]="colorMenu">
+                    <i class="fa fa-circle" [style.color]="Color"></i>
+                </button>
+                <mat-menu #colorMenu="matMenu">
+                    <div class="flexWrapper">
+                        <div class="flexRow pt10">
+                            <div class="grow center p5">
+                                <button mat-icon-button class="blue {{SizeClass}}" (click)="SetColor('#2196F3')" [ngClass]="{'bordered': Color === '#2196F3'}">
+                                    <i class="fa fa-check white-text" [ngClass]="{'fa-check': Color === '#2196F3'}" ></i>
+                                </button>
+                            </div>
+                            <div class="grow center p5">
+                                <button mat-icon-button class="green {{SizeClass}}" (click)="SetColor('#4CAF50')" [ngClass]="{'bordered': Color === '#4CAF50'}">
+                                    <i class="fa fa-check white-text" [ngClass]="{'fa-check': Color === '#4CAF50'}"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="flexRow">
+                            <div class="grow center p5">
+                                <button mat-icon-button class="yellow {{SizeClass}}" (click)="SetColor('#ffeb3b')" [ngClass]="{'bordered': Color === '#ffeb3b'}">
+                                    <i class="fa fa-check white-text" [ngClass]="{'fa-check': Color === '#ffeb3b'}"></i>
+                                </button>
+                            </div>
+                            <div class="grow center p5">
+                                <button mat-icon-button class="red {{SizeClass}}" (click)="SetColor('#F44336')" [ngClass]="{'bordered': Color === '#F44336'}">
+                                    <i class="fa fa-check white-text" [ngClass]="{'fa-check': Color === '#F44336'}"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="flexRow">
+                            <div class="grow center p5">
+                                <button mat-icon-button class="orange {{SizeClass}}" (click)="SetColor('#ff9800')" [ngClass]="{'bordered': Color === '#ff9800'}">
+                                    <i class="fa fa-check white-text" [ngClass]="{'fa-check': Color === '#ff9800'}"></i>
+                                </button>
+                            </div>
+                            <div class="grow center p5">
+                                <button mat-icon-button class="purple {{SizeClass}}" (click)="SetColor('#9c27b0')" [ngClass]="{'bordered': Color === '#9c27b0'}">
+                                    <i class="fa white-text" [ngClass]="{'fa-check': Color === '#9c27b0'}"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="flexRow pb10">
+                            <div class="grow center p5">
+                                <button mat-icon-button class="black {{SizeClass}}" (click)="SetColor('#000000')" [ngClass]="{'bordered': Color === '#0000000'}">
+                                    <i class="fa fa-check white-text" [ngClass]="{'fa-check': Color === '#000000'}"></i>
+                                </button>
+                            </div>
+                            <div class="grow center p5">
+                                <button mat-icon-button class="white {{SizeClass}}" (click)="SetColor('#ffffff')" [ngClass]="{'bordered': Color === '#ffffff'}" style="border: 1px solid #ccc;">
+                                    <i class="fa white-text" [ngClass]="{'fa-check': Color === '#ffffff'}"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </mat-menu>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="!MobileMode">
+        <div [ngClass]="{'flexRow': !Vertical, 'flexColumn': Vertical}">
+            <ng-container *ngIf="!SingleMode">
+                <div class="shrink p2 menubg" [ngClass]="{'roundedLeft': !Vertical, 'roundedTop': Vertical}">
+                    <button mat-icon-button class="blue {{SizeClass}}" (click)="SetColor('#2196F3')" [ngClass]="{'bordered': Color === '#2196F3'}">
+                        <i class="fa fa-check white-text" [ngClass]="{'fa-check': Color === '#2196F3'}" ></i>
+                    </button>
+                </div>
+                <div class="shrink p2 menubg">
+                    <button mat-icon-button class="green {{SizeClass}}" (click)="SetColor('#4CAF50')" [ngClass]="{'bordered': Color === '#4CAF50'}">
+                        <i class="fa fa-check white-text" [ngClass]="{'fa-check': Color === '#4CAF50'}"></i>
+                    </button>
+                </div>
+                <div class="shrink p2 menubg">
+                    <button mat-icon-button class="yellow {{SizeClass}}" (click)="SetColor('#ffeb3b')" [ngClass]="{'bordered': Color === '#ffeb3b'}">
+                        <i class="fa fa-check white-text" [ngClass]="{'fa-check': Color === '#ffeb3b'}"></i>
+                    </button>
+                </div>
+                <div class="shrink p2 menubg">
+                    <button mat-icon-button class="orange {{SizeClass}}" (click)="SetColor('#ff9800')" [ngClass]="{'bordered': Color === '#ff9800'}">
+                        <i class="fa fa-check white-text" [ngClass]="{'fa-check': Color === '#ff9800'}"></i>
+                    </button>
+                </div>
+                <div class="shrink p2 menubg">
+                    <button mat-icon-button class="red {{SizeClass}}" (click)="SetColor('#F44336')" [ngClass]="{'bordered': Color === '#F44336'}">
+                        <i class="fa fa-check white-text" [ngClass]="{'fa-check': Color === '#F44336'}"></i>
+                    </button>
+                </div>
+                <div class="shrink p2 menubg">
+                    <button mat-icon-button class="purple {{SizeClass}}" (click)="SetColor('#9c27b0')" [ngClass]="{'bordered': Color === '#9c27b0'}">
+                        <i class="fa white-text" [ngClass]="{'fa-check': Color === '#9c27b0'}"></i>
+                    </button>
+                </div>
+            </ng-container>
+            <div class="shrink p2 {{SizeClass}}" [ngClass]="{'roundedRight': !Vertical, 'roundedBottom': Vertical, 'menubg': !SingleMode}">
+                <button mat-icon-button class="{{SizeClass}}" [ngClass]="{'bordered': NotStandardColor() && !SingleMode, 'mat-elevation-z1': SingleMode}" [style.background-color]="NotStandardColor() ? Color: '#00000000'"
+                    [cpAlphaChannel]="'always'"
+                    [cpOutputFormat]="'rgba'"
+                    [(colorPicker)]="Color"
+                    (colorPickerChange)="SetColor(Color)">
+                        <i class="fa fa-swatchbook {{PickerClass}}" *ngIf="!SingleMode"></i>
+                </button>
+            </div>
+        </div>
+    </ng-container>
+    
+</div>

@@ -1,0 +1,116 @@
+<div class="flexWrapper">
+  <div class="flexColumn">
+    <div class="shrink black white-text" #header>
+      <div class="iosTop">
+        <div class="flexRow">
+          <div class="grow p5">
+            <button mat-button disabled class="white-text">
+              Edit Photo
+            </button>
+          </div>
+          <div class="shrink p5">
+            <button mat-button class="white-text" (click)="Close()">
+              <i class="fa fa-undo mr5"></i>Cancel
+            </button>
+          </div>
+          <div class="shrink p5">
+            <button mat-button class="primary white-text" (click)="Close(true)">
+              <i class="fa fa-save mr5 black-text"></i>Save
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-container *ngIf="!ShowDetails">
+      <div class="grow p5 grey darken-2 center" #editContainer>
+        <canvas #imgcanvas id="imgcanvas" class="imgContainer mat-elevation-z2"
+                (touchstart)="TouchStart($event)" 
+                (touchmove)="TouchMove($event)" 
+                (touchend)="TouchEnd($event)"
+                [style.width.px]="GetWidth()"
+                [style.height.px]="GetHeight()"
+                [style.background-image]="'url(' + Image.Data + ')'">
+        </canvas>
+      </div>
+      <div class="shrink grey darken-2 p10 pt5" style="z-index: 99;">
+        <div class="flexRow grey darken-3 white-text rounded">
+          <div class="grow p5">
+            <div class="align left" *ngIf="MyObjects.length">
+              <button mat-icon-button (click)="Undo()" class="grey-text text-lighten-2">
+                <i class="fa fa-undo"></i>
+              </button>
+            </div>
+          </div>
+          <div class="shrink p5" *ngFor="let shape of Shapes">
+            <div class="align">
+              <button mat-icon-button (touchstart)="SelectShape(shape, $event)" 
+                                      (touchmove)="ChangeShapeStroke($event)" 
+                                      (touchend)="SetShapeStroke($event)"
+                                      [ngClass]="{'grey darken-4': SelectedShape?.Label === shape.Label}">
+                <i class="{{shape.Icon}}" [ngStyle]="{'color': (SelectedShape?.Label === shape.Label) ? ShapeColor : '#ffffff'}"></i>
+              </button>
+            </div>
+          </div>
+          <div class="grow p5">
+            <div class="align right">
+              <cc-simple-color-picker [Color]="ShapeColor" [MobileMode]="true" [SizeClass]="'xsIconBtn'" (ColorChange)="ChangeShapeColor($event)"></cc-simple-color-picker>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <div class="grey white-text" [ngClass]="{'grow lighten-5': ShowDetails, 'shrink darken-4': !ShowDetails}">
+      <div class="iosBottom">
+        <div class="flexColumn">
+          <div class="shrink grey darken-4">
+            <div class="flexRow">
+              <div class="shrink p5">
+                <button mat-icon-button class="white-text" (click)="ToggleDetails()">
+                  <i class="fa" [ngClass]="{'fa-chevron-up': ShowDetails, 'fa-chevron-down': !ShowDetails}"></i>
+                </button>
+              </div>
+              <div class="grow p5"></div>
+              <div class="shrink p5">
+                <button mat-icon-button class="red-text" (click)="Close()">
+                  <i class="fa fa-trash-can"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="grow p5 scrollY black-text" *ngIf="ShowDetails">
+              <div class="flexColumn">
+                <div class="shrink p5">
+                  <div class="label grey-text f10">
+                    Name
+                  </div>
+                  <input type="styledInput left w100 white">
+                </div>
+                <div class="shrink p5">
+                  <div class="label grey-text f10">
+                    Description
+                  </div>
+                  <textarea type="styledInput left w100 white"></textarea>
+                </div>
+                <div class="shrink p5">
+                  <div class="label grey-text f10">
+                    Tags
+                  </div>
+                  <mat-checkbox>Tag</mat-checkbox>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="strokeContainer rounded" *ngIf="ShowStrokeSize">
+    <div class="flexColumn">
+      <div class="shrink center p10 f14 white-text">
+        Size
+      </div>
+      <div class="shrink center p10">
+        <i class="fa fa-circle" [style.font-size.px]="StrokeSize" [style.color]="ShapeColor"></i>
+      </div>
+    </div>
+  </div>
+</div>

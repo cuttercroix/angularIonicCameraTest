@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "cameraTest",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

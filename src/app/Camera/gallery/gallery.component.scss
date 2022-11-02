@@ -1,0 +1,17 @@
+.imgCell{
+    width: calc(100vw / 3);
+    height: calc((100vw / 3) * (16/9));
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+  .imgWrapper{
+    max-height: calc((100vw / 3) * (16/9));
+  }
+  .imgBtn{
+    width: calc(100vw / 3);
+    height: 140px;
+  }
+  .whiteBorder{
+    border: 1px solid #fff;
+  }

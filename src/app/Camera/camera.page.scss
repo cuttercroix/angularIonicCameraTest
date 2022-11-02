@@ -1,0 +1,56 @@
+.imgCell{
+  width: calc(50px * (9/16));
+  height: 50px;
+}
+.imgCell .img{
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: calc(50px * (9/16));
+  height: 50px;
+  border-radius: 3px;
+  border: 1px solid #fff;
+}
+.scrollX{
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+.cameraTrigger{
+    width: 72px!important;
+    height: 72px!important;
+    line-height: normal!important;
+    opacity: .85;
+}
+.cameraTrigger .fa-circle{
+    font-size: 56px!important;
+    border: 3px solid rgba(0, 0, 0, 0.421);
+    border-radius: 50%;
+    line-height: normal!important;
+}
+#content{
+    --background: transparent !important;
+ }
+ .fullScreenModal{
+    --ion-background-color:transparent;
+ }
+ .zoompill{
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50px;
+ }
+ .semiGrey{
+    background-color: rgba(0, 0, 0, 0.5);
+ }
+ .barelyGrey{
+    background-color: rgba(0, 0, 0, 0.25);
+ }
+ .blackTrans{
+    background-color: rgba(0, 0, 0, 0.25);
+ }
+ ion-app, ion-content, .nav-decor {
+   background-color: transparent !important;
+ }
+ .viewGalleryBtnContainer{
+  position: relative;
+  left: calc(50vw - 18px);
+  bottom: 18px;
+ }

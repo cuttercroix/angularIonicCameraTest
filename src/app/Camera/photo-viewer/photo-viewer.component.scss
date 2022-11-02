@@ -1,0 +1,17 @@
+.imgContainer{
+    border: 1px solid #fff;
+}
+#imgcanvas{
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.strokeContainer{
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    position: fixed;
+    width: 80px;
+    top: calc(50vh - 40px);
+    left: calc(50vw - 40px);
+}
